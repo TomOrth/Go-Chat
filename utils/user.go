@@ -1,5 +1,6 @@
 package utils
+import "net"
 type User struct {
 	Name string
-	Timestamp string
+	Conn net.Conn
 }

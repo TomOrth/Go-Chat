@@ -4,11 +4,12 @@ type Node struct {
     Value User
 	Next, Prev *Node
 }
-type List struct {
+type ConnList struct {
 	Head, Tail *Node
+	Size int
 }
 
-func (l *List) Append(value User) {
+func (l *ConnList) Append(value User) {
 	node := &Node{value, nil, nil}
 	if l.Head == nil {
 		l.Head = node
@@ -21,9 +22,10 @@ func (l *List) Append(value User) {
 			l.Head.Next = l.Tail.Prev
 		}
 	}
+	l.Size += 1
 }
 
-func (l *List) Prepend(value User) {
+func (l *ConnList) Prepend(value User) {
 	node := &Node{value, nil, nil}
 	if l.Head == nil {
 		l.Head = node
@@ -32,9 +34,10 @@ func (l *List) Prepend(value User) {
 		node.Next = l.Head
 		l.Head = node
 	}
+	l.Size += 1
 }
 
-func (l *List) Get(index int) User {
+func (l *ConnList) Get(index int) User {
 	temp := l.Head
 	counter := 0
 	for temp != nil {
@@ -45,4 +48,12 @@ func (l *List) Get(index int) User {
 		counter += 1;
 	}
 	return User{}
+}
+
+func (l *ConnList) Broadcast(message string) {
+	temp := l.Head
+	for temp != nil {
+		temp.Value.Conn.Write([]byte(message))
+		temp = temp.Next
+	}
 }

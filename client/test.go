@@ -8,7 +8,7 @@ import "os"
 func main() {
 
   // connect to this socket
-  conn, _ := net.Dial("tcp", "localhost:6000")
+  conn, _ := net.Dial("tcp", "localhost:8000")
   go func() {
     for {
       // listen for reply
