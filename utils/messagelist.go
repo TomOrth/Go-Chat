@@ -1,15 +1,11 @@
 package utils
 
-type Node struct {
-	Value      interface{}
-	Next, Prev *Node
-}
-type ConnList struct {
+type MsgList struct {
 	Head, Tail *Node
 	Size       int
 }
 
-func (l *ConnList) Append(value User) {
+func (l *MsgList) Append(value string) {
 	node := &Node{value, nil, nil}
 	if l.Head == nil {
 		l.Head = node
@@ -25,7 +21,7 @@ func (l *ConnList) Append(value User) {
 	l.Size += 1
 }
 
-func (l *ConnList) Prepend(value User) {
+func (l *MsgList) Prepend(value string) {
 	node := &Node{value, nil, nil}
 	if l.Head == nil {
 		l.Head = node
@@ -37,23 +33,29 @@ func (l *ConnList) Prepend(value User) {
 	l.Size += 1
 }
 
-func (l *ConnList) Get(index int) User {
+func (l *MsgList) Get(index int) string {
 	temp := l.Head
 	counter := 0
 	for temp != nil {
 		if counter == index {
-			return temp.Value.(User)
+			return temp.Value.(string)
 		}
 		temp = temp.Next
 		counter += 1
 	}
-	return User{}
+	return ""
 }
 
-func (l *ConnList) Broadcast(message string) {
-	temp := l.Head
-	for temp != nil {
-		temp.Value.(User).Conn.Write([]byte(message))
-		temp = temp.Next
+func (l *MsgList) DeleteHead() {
+	l.Head = l.Head.Next
+}
+
+func (l *MsgList) MessageArr() []string {
+	temp := make([]string, 0)
+	tempNode := l.Head
+	for tempNode != nil {
+		temp = append(temp, tempNode.Value.(string))
+		tempNode = tempNode.Next
 	}
+	return temp
 }
