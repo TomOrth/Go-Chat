@@ -2,9 +2,9 @@
 TCP/IP chat program using golang
 
 ## Fun facts
-*Utilizes custom doubly linked lists to allow for fast insertion and deletion of objects
-*Utilizes `termui` to create an interactive terminal UI
-*Concurrent to handle multiple requests
+* Utilizes custom doubly linked lists to allow for fast insertion and deletion of objects
+* Utilizes `termui` to create an interactive terminal UI
+* Concurrent to handle multiple requests
 
 ## Running the server
 To run the server, you first have to install `termui` and the lists package used in this program by doing the following:
