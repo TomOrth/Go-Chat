@@ -1,10 +1,13 @@
-package utils
+//Package lists contains custom doubly linked lists that allow for fast insertion and deletion of elements
+package lists
 
+//Type MsgList is a list of messages a client recieves from the server
 type MsgList struct {
-	Head, Tail *Node
-	Size       int
+	Head, Tail *Node //head and tail nodes, necessary for the list
+	Size       int   //size of the list
 }
 
+//Append takes a new msg as a string and appends it to the end of the list
 func (l *MsgList) Append(value string) {
 	node := &Node{value, nil, nil}
 	if l.Head == nil {
@@ -21,35 +24,12 @@ func (l *MsgList) Append(value string) {
 	l.Size += 1
 }
 
-func (l *MsgList) Prepend(value string) {
-	node := &Node{value, nil, nil}
-	if l.Head == nil {
-		l.Head = node
-		l.Tail = node
-	} else {
-		node.Next = l.Head
-		l.Head = node
-	}
-	l.Size += 1
-}
-
-func (l *MsgList) Get(index int) string {
-	temp := l.Head
-	counter := 0
-	for temp != nil {
-		if counter == index {
-			return temp.Value.(string)
-		}
-		temp = temp.Next
-		counter += 1
-	}
-	return ""
-}
-
+//DeleteHead deletes the first message in the list
 func (l *MsgList) DeleteHead() {
 	l.Head = l.Head.Next
 }
 
+//MessageArr converts the doubly linked list into a string slice for the terminal UI
 func (l *MsgList) MessageArr() []string {
 	temp := make([]string, 0)
 	tempNode := l.Head
