@@ -8,7 +8,7 @@ import (
 	"net"
 	"strings"
 
-	"../lists"
+	"github.com/TomOrth/go-chat/lists"
 	"github.com/gizak/termui"
 )
 
