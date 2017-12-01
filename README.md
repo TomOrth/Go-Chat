@@ -1,4 +1,4 @@
-# go-chat
+# Go-Chat
 TCP/IP chat program using golang
 
 ## Fun facts
