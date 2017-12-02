@@ -86,7 +86,7 @@ func (c *Client) Listen() {
 		if err != nil {
 			panic(err)
 		}
-		c.Add(strings.Replace(message, "\n", "", -1))
+		c.Add(strings.Replace(message, "\n", "", -1)) //odd thing where theres an extra \n occasionally. This needs to be fixed
 		if c.MsgList.Size > 20 {
 			c.MsgList.DeleteHead()
 		}
