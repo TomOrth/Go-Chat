@@ -19,3 +19,6 @@ Then, go to the `server` folder and run `go run main.go -port <port>`. -port is 
 
 ## Running the client
 To run the client, follow the steps to install `termui` and the lists pacakge if you have not done so yet and then go to the `client` folder and run `go run main.go -port <port> -host <host> -name <name>`.  Similarly to the server, those flags are optional and can be left out.
+
+## Licensing
+This software is available under the MIT License.
